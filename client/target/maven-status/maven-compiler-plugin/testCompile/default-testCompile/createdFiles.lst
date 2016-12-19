@@ -1,0 +1,3 @@
+net/basiccloud/etcd/EtcdConnectionBuilderTest.class
+net/basiccloud/etcd/internal/EtcdAddressParserTest.class
+net/basiccloud/etcd/internal/JsonUtilTest.class

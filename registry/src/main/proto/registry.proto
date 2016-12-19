@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package registry;
+
+option java_multiple_files = true;
+option java_package = "net.basiccloud.etcd.registry.internal.entity";
+
+message ServiceGroupInfoEntity {
+    string displayName = 1;
+    string department = 2;
+    string description = 3;
+}
+
+message ServiceInfoEntity {
+    string displayName = 1;
+    string description = 2;
+}
+
+message ServiceInstanceDataEntity {
+    string serviceType = 1;
+    string serviceVersion = 2;
+    string frameworkVersion = 3;
+    WorkMode workMode = 4;
+    repeated string tags = 5;
+    map<string, int32> ports = 6;
+}
+
+message ServiceInstanceStatusEntity {
+    Status status = 1;
+    int64 lastUpdateTime = 2;
+    string comment = 3;
+    int64 leaseId = 4;
+}
+
+enum Status {
+    /// offline
+    OFFLINE = 0;
+    /// online
+    ONLINE = 1;
+}
+
+enum WorkMode {
+    /// normal mode
+    NORMAL = 0;
+    /// maintenance mode
+    MAINTENANCE = 1;
+    /// degrade mode
+    DEGRADE = 2;
+}
