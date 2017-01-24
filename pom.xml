@@ -2,54 +2,51 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>net.basiccloud.dependency</groupId>
-    <artifactId>foundation-dependency-rpc</artifactId>
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>net.basiccloud.dependency</groupId>
+        <artifactId>foundation-dependency-rpc</artifactId>
+        <version>0.1.0-SNAPSHOT</version>
+    </parent>
+    <groupId>net.basiccloud.etcd</groupId>
+    <artifactId>foundation-etcd-parent</artifactId>
     <version>0.1.0-SNAPSHOT</version>
-  </parent>
-  <groupId>net.basiccloud.etcd</groupId>
-  <artifactId>foundation-etcd-parent</artifactId>
-  <version>0.1.0-SNAPSHOT</version>
-  <name>Parent - Foundation Etcd</name>
-  <packaging>pom</packaging>
+    <name>Parent - Foundation Etcd</name>
+    <packaging>pom</packaging>
 
-  <properties>
-    <foundation.registry.version>0.1.0-SNAPSHOT</foundation.registry.version>
-  </properties>
+    <properties>
+        <foundation.registry.version>0.1.0-SNAPSHOT</foundation.registry.version>
+    </properties>
 
-  <modules>
-    <module>client</module>
-    <module>registry</module>
-  </modules>
+    <modules>
+        <module>client</module>
+        <module>registry</module>
+    </modules>
 
+    <repositories>
+        <repository>
+            <id>basicCloud</id>
+            <name>basic cloud repository</name>
+            <url>http://maven.basiccloud.net/artifactory/list/basic-cloud/</url>
+        </repository>
+    </repositories>
 
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>net.basiccloud.registry</groupId>
-        <artifactId>foundation-registry-api</artifactId>
-        <version>${foundation.registry.version}</version>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>net.basiccloud.registry</groupId>
+                <artifactId>foundation-registry-api</artifactId>
+                <version>${foundation.registry.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
-        <version>3.0.0</version>
-        <executions>
-          <execution>
-            <id>attach-sources</id>
-            <phase>verify</phase>
-            <goals>
-              <goal>jar-no-fork</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
