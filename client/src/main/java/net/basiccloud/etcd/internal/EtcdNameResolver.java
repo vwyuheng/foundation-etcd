@@ -6,6 +6,7 @@ import com.google.common.base.Strings;
 import io.grpc.Attributes;
 import io.grpc.NameResolver;
 import io.grpc.ResolvedServerInfo;
+import io.grpc.ResolvedServerInfoGroup;
 import io.grpc.Status;
 import io.grpc.internal.LogExceptionRunnable;
 import io.grpc.internal.SharedResourceHolder;
@@ -75,8 +76,8 @@ class EtcdNameResolver extends NameResolver {
     };
 
     EtcdNameResolver(String etcdAddresses,
-                     SharedResourceHolder.Resource<ScheduledExecutorService> timerServiceResource,
-                     SharedResourceHolder.Resource<ExecutorService> executorResource) {
+            SharedResourceHolder.Resource<ScheduledExecutorService> timerServiceResource,
+            SharedResourceHolder.Resource<ExecutorService> executorResource) {
         checkArgument(!Strings.isNullOrEmpty(etcdAddresses), "etcdAddresses should not be null or empty");
         checkNotNull(timerServiceResource, "timerServiceResource should not be null");
         checkNotNull(executorResource, "executorResource should not be null");
@@ -191,7 +192,10 @@ class EtcdNameResolver extends NameResolver {
                         servers.add(new ResolvedServerInfo(inetSocketAddress, Attributes.EMPTY));
                     }
                 }
-                savedListener.onUpdate(Collections.singletonList(servers), Attributes.EMPTY);
+
+                List<ResolvedServerInfoGroup> resolvedServerInfoGroups = Collections.singletonList(
+                        ResolvedServerInfoGroup.builder().addAll(servers).build());
+                savedListener.onUpdate(resolvedServerInfoGroups, Attributes.EMPTY);
             } finally {
                 synchronized (EtcdNameResolver.this) {
                     resolving = false;

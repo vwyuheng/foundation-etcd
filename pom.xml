@@ -16,11 +16,13 @@
 
     <properties>
         <foundation.registry.version>0.1.0-SNAPSHOT</foundation.registry.version>
+        <foundation.distributed.lock.version>0.1.0-SNAPSHOT</foundation.distributed.lock.version>
     </properties>
 
     <modules>
         <module>client</module>
         <module>registry</module>
+        <module>distributed-lock</module>
     </modules>
 
     <repositories>
@@ -37,6 +39,11 @@
                 <groupId>net.basiccloud.registry</groupId>
                 <artifactId>foundation-registry-api</artifactId>
                 <version>${foundation.registry.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.basiccloud.distributed.lock</groupId>
+                <artifactId>foundation-distributed-lock-api</artifactId>
+                <version>${foundation.distributed.lock.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
