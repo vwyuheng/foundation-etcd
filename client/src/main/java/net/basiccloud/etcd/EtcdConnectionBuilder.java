@@ -66,9 +66,9 @@ public class EtcdConnectionBuilder {
     public ManagedChannel build() {
         checkState(etcdUri != null, "please set etcdUri before build");
 
-        //NettyChannelBuilder nettyChannelBuilder = NettyChannelBuilder.forAddress("127.0.0.1", 2379)
         NettyChannelBuilder nettyChannelBuilder = NettyChannelBuilder.forTarget(etcdUri)
-                .nameResolverFactory(new EtcdNameResolverProvider())
+                // we use SPI to load EtcdNameResolverProvider, so comment this line
+                //.nameResolverFactory(new EtcdNameResolverProvider())
                 .usePlaintext(true);
         return nettyChannelBuilder.build();
     }
