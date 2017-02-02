@@ -22,7 +22,6 @@
     <modules>
         <module>client</module>
         <module>registry</module>
-        <module>distributed-lock</module>
     </modules>
 
     <repositories>
@@ -39,11 +38,6 @@
                 <groupId>net.basiccloud.registry</groupId>
                 <artifactId>foundation-registry-api</artifactId>
                 <version>${foundation.registry.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>net.basiccloud.distributed.lock</groupId>
-                <artifactId>foundation-distributed-lock-api</artifactId>
-                <version>${foundation.distributed.lock.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
