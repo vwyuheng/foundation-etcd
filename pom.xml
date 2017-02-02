@@ -16,6 +16,7 @@
 
     <properties>
         <foundation.registry.version>0.1.0-SNAPSHOT</foundation.registry.version>
+        <foundation.distributed.lock.version>0.1.0-SNAPSHOT</foundation.distributed.lock.version>
     </properties>
 
     <modules>
