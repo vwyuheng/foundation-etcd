@@ -60,12 +60,14 @@ public class ServiceRegistryClientEtcdImpl extends AbstractServiceRegistryEtcdIm
         List<ServiceInstance> serviceInstances = instanceQuery(group, service, version);
         return serviceInstances.stream().filter(
                 serviceInstance -> serviceInstance.getData().getWorkMode().isAvailable() &&
-                        serviceInstance.getStatus().isOnline()).collect(Collectors.toList());
+                        serviceInstance.getStatus() != null && serviceInstance.getStatus().isOnline()).collect
+                (Collectors
+                        .toList());
     }
 
     @Override
     public boolean watch(String group, String service, Version version,
-                         ClientListener clientListener) {
+            ClientListener clientListener) {
         StreamObserver<WatchRequest> watch = watchStub.watch(new StreamObserver<WatchResponse>() {
             @Override
             public void onNext(WatchResponse value) {
