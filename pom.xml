@@ -5,13 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>net.basiccloud.dependency</groupId>
-        <artifactId>foundation-dependency-rpc</artifactId>
-        <version>0.1.0-SNAPSHOT</version>
+        <artifactId>basiccloud-dependencies-standard</artifactId>
+        <version>0.2.0-SNAPSHOT</version>
     </parent>
     <groupId>net.basiccloud.etcd</groupId>
     <artifactId>foundation-etcd-parent</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>0.2.0-SNAPSHOT</version>
     <name>Parent - Foundation Etcd</name>
+    <url>https://github.com/basiccloud/foundation-etcd/</url>
     <packaging>pom</packaging>
 
     <properties>
